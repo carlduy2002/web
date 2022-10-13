@@ -1,0 +1,41 @@
+<html>
+
+{% block title %}{% endblock %}
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+</head>
+{% block body %}
+<style>
+    body{
+        background: url('../Image/Background-shoe-shop.jpg');   
+    }
+    .cover{
+        margin-top: 240px;
+    }
+    .container-fluid{
+        background: rgba(0, 0, 0, 0.8);
+        box-shadow: 2px 2px 17px 10px rgba(255, 255, 255, 0.8);
+        color: white;
+    }
+    input{
+        margin-top: -42px;
+        margin-left: 65px;
+    }
+    .btn{
+        margin-left: 32px;
+    }
+</style>
+<body>
+    <div class="cover">
+        <div class="container-fluid" style="width: 150px">
+            <div style="width: 60px">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</body> 
+{% endblock %}
+</html>

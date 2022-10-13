@@ -1,0 +1,85 @@
+{# {% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'D:/Learning/Cloud (1644)/ASM2/WEBTOY/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'D:/Learning/Cloud (1644)/ASM2/WEBTOY/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %} #}
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<head>
+
+    <link rel="stylesheet" href="product.css">
+    <script src="product.js" defer></script>
+
+</head>
+
+<body>
+<section id="hero">
+    {# <div class="search">
+    <form action="{{path('search_page')}}" method="post" class="search-bar" >
+        <input type="text" class="" placeholder="Search" name="search-txt">
+        <button type="summit"><i class="bi bi-search"></i></button>
+    </form>
+  </div> #}
+<div class="container-product">
+
+   <h3 class="title"> NEW PRODUCTS </h3>
+
+   <div class="products-container">
+{% for product in products %}
+      <div class="product" data-name="{{product.id}}">
+         <img src="./Image/{{product.Image}}" alt="">
+         <h3>{{product.Name}}</h3>
+         <div class="price">{{product.Price|number_format(0, '.', ',')}}<span> &#8363;</span></div>
+      </div>
+{% endfor %}
+   </div>
+
+</div>
+
+<div class="products-preview">
+{% for product in products %}
+   <div class="preview" data-target="{{product.id}}">
+      <i class="fas fa-times"></i>
+      <img src="./Image/{{product.Image}}" alt="">
+      <h3></h3>
+      <div class="stars">
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star"></i>
+         <i class="fas fa-star-half-alt"></i>
+         <span>( 250 )</span>
+      </div>
+      <p>{{product.Detail}}</p>
+      <div class="price">{{product.Price|number_format(0, '.', ',')}}<span> &#8363;</span></div>
+      <div class="buttons">
+         {# <a href="#" class="buy">buy now</a> #}
+         <a href="{{path ('product_page')}}" class="cart">Learn More</a>
+      </div>
+   </div>
+{% endfor %}
+</div>
+</section>
+</body>
+
+{% endblock %}
+

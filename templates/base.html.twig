@@ -1,19 +1,180 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <link rel="icon" type="image/x-icon" href="./Image/ShoeIcon.ico">
+    <script src="https://kit.fontawesome.com/df8e5c3257.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="Style.css" type="text/css">
+    <link rel="stylesheet" href="search.css" type="text/css">
+    {# <link rel=" stylesheet" href="Base.css"> #}
+    <title>
+        TOYS Shop
+    </title>
+    {% block stylesheets %}
+      {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+    {% block javascripts %}
+      {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Header -->
+    <section id="header">
+      <div class="header container">
+        <div class="nav-bar">
+          <div class="brand">
+          
+            <a href="{{ path ('home_page') }}">
+              {# <h1><span>D</span>HC <span>S</span>hop</h1> #}
+              <img src="./Image/Toys.png" id="DHC" class="responsive">
+            </a>
+           
+          </div>
+          
+          <div class="nav-list">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
+            <div class="hamburger">
+            
+              <div class="bar"></div>
+            </div>
+            <ul>
+              <li>
+                <a href="{{ path ('home_page') }}" data-after="Home">
+                  Home 
+                  <i class="bi bi-house-heart-fill"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ path ('about_page') }}" data-after="About">
+                  About 
+                  <i class="bi bi-info-circle-fill"></i>
+                </a>
+              </li>
+              <li>
+                <a href="{{ path ('product_page') }}" data-after="Products">
+                  Products 
+                  <i class="fa-solid fa-socks"></i>
+                  {# <i class="fa-solid fa-teddy-bear"></i> #}
+                </a>
+              </li>
+              {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                  <li>
+                    <a href="#" data-after="About">
+                      Management 
+                      <i class="bi bi-kanban-fill"></i>
+                    </a>
+                    <ul id="mana">
+                      <li><a href="{{ path ('pro_manager') }}">Products</a></li>
+                      <li><a href="{{ path ('order_manager') }}">Orders</a></li>
+                      <li><a href="{{ path ('app_supplier') }}">Supliers</a></li>
+                      <li><a href="{{ path ('user_manager') }}">Account</a></li>
+                      <li><a href="{{path ('app_feadback')}}">Feedback</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                  <li>
+                    <a href="{{ path ('showcart') }}" data-after="Cart">
+                      Cart 
+                      <i class="bi bi-bag-heart-fill"></i>
+                    </a>
+                  </li>
+                {% endif %}
+              {% endif %}
+              {% if app.user %}
+                {% if is_granted('ROLE_ADMIN') %}
+                  <li>
+                    <a href="#"data-after="{{ app.user.userIdentifier }}">
+                      Hi {{ app.user.userIdentifier }}
+                       <span class="bi bi-person-circle"></span>
+                    </a>
+                    
+                  </li>
+                  <li>
+                    <a href="{{ path ('app_logout') }}" data-after="Logout">           
+                      Logout<span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                  </li>
+                  
+                {% else %}
+                  <li>
+                     <a href="{{path ('profile_page')}}"data-after="{{ app.user.userIdentifier }}">
+                      Hi {{ app.user.userIdentifier }}
+                       <span class="bi bi-person-circle"></span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="{{ path ('app_logout') }}" data-after="Lougout">
+                      
+                      Logout <span class="glyphicon glyphicon-log-out"></span>
+                    </a>
+                  </li>
+                {% endif %}
+              {% else %}
+                <li>
+                  <a href="{{ path ('app_login') }}" data-after="Login">
+                    Login 
+                    <i class="bi bi-box-arrow-in-right"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{ path ('app_register') }}" data-after="Register">
+                    Register 
+                    <i class="bi bi-box-arrow-left"></i>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </div>
+     
+      {# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script> #}
+      <script src="./app.js"></script>
     </body>
+  </body>
 </html>
+</section>
+{% block body %}{% endblock %}
+
+{% block footer %}
+<section id="footer">
+  <div class="footer container">
+    <div class="brand">
+      <h1>
+        <span>
+          TOY
+        </span>
+        S h
+        <span>
+          o
+        </span>
+        p
+      </h1>
+    </div>
+    <h2 class="text-center">
+      Toy Shop Online., HD-Vietnam Branch
+      <br>
+      Address: P8 - Dinh Tien Hoang - TP Vinh Long
+      <br>
+      Tel: 0931927908
+      <br>
+      Created by: Toy Shop
+    </h2>
+    <div class="social-icon">
+      <div class="social-item">
+        <a href="#">
+          <img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" />
+        </a>
+      </div>
+    </div>
+    <p>
+      Copyright © 2022 TOYS. All rights reserved
+    </p>
+  </div>
+</section><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script></html>
+{% endblock %}

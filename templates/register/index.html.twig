@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<head>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <section id="register-form">
+    <p>Register</p>
+    <div>
+        {{ form_start(register_form) }}
+            {{ form(register_form) }}
+        {{ form_end(register_form) }}
+    
+    </div>
+</section>
+<body>
+{% endblock %}
