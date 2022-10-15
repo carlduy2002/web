@@ -63,4 +63,54 @@ class CartDetailRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+/**
+    * @return Contain[] Returns an array of Contain objects
+    */
+    public function checkQty($proid, $cartid): array
+    {
+        return $this->createQueryBuilder('c')
+             ->select('Count(c.id) as count, c.Qty_Product as quantity, c.id as id')
+             ->innerJoin('c.product', 'p')
+             ->innerJoin('c.cart', 'cart')
+             ->andWhere('p.id = :proid')
+             ->setParameter('proid', $proid)
+             ->andWhere('cart.id = :cartid')
+             ->setParameter('cartid', $cartid)
+             ->getQuery()
+             ->getResult()
+         ;
+    }
+ 
+    
+    /**
+     * @return Contain[] Returns an array of Contain objects
+     */
+    public function countContain($caID): array
+    {
+        return $this->createQueryBuilder('c')
+             ->select('Count(c.id) as CountCart')
+             ->innerJoin('c.cart', 'ca')
+             ->where('ca.id = :id')
+             ->setParameter('id', $caID)
+             ->getQuery()
+             ->getResult()
+        ;
+    }
+ 
+ 
+       /**
+     * @return Contain[] Returns an array of Contain objects
+     */
+     public function getProID($caID): array
+     {
+         return $this->createQueryBuilder('c')
+              ->select('c.Qty_Product as quantity, p.id as ProductID, p.Quantity as ProQty')
+              ->innerJoin('c.cart', 'ca')
+              ->where('ca.id = :id')
+              ->setParameter('id', $caID)
+              ->innerJoin('c.product', 'p')
+              ->getQuery()
+              ->getResult()
+         ;
+     }
 }

@@ -16,13 +16,13 @@
                 <th>Address</th>
                 <th>Phone</th>
 
-                <th style="width:185px;" class="action"><a style="color: #272727;" href="{{path ('add_supplier')}}">
-                        <i class="glyphicon glyphicon-plus"></i> Add new Supplier</a>
+                <th style="width:185px;" class="action"><a style="color: #272727;" href="{{path ('add_shop')}}">
+                        <i class="glyphicon glyphicon-plus"></i> Add new Shop</a>
                 </th>
             </tr>
         </thead>
         <tbody>
-            {% for s in supplier %}
+            {% for s in shop %}
             <tr>
                 <td>{{s.id}}</td>
                 <td>{{s.Name}}</td>
@@ -30,8 +30,8 @@
                 <td>{{s.Address}}</td>
                 <td>{{s.Phone}}</td>
 
-                <td><a style="color: #272727; margin-left:30px;" href="{{path ('edit_supplier', {'id' : s.id})}}" class="glyphicon glyphicon-pencil"></a> 
-                <a style="color: #272727; margin-left:30px;" href="{{path ('deleteSupplier', {'id' : s.id})}}" class="glyphicon glyphicon-remove"></a></td>
+                <td><a style="color: #272727; margin-left:30px;" href="{{path ('edit_shop', {'id' : s.id})}}" class="glyphicon glyphicon-pencil"></a> 
+                <a style="color: #272727; margin-left:30px;" href="{{path ('deleteShop', {'id' : s.id})}}" class="glyphicon glyphicon-remove"></a></td>
             </tr>
             {% endfor %}
         </tbody>

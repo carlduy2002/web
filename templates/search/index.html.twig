@@ -26,9 +26,9 @@
    <div class="products-container">
 {% for product in products %}
       <div class="product" data-name="{{product.id}}">
-         <img src="./Image/{{product.Image}}" alt="">
+         <img src="./Image/{{product.Pro_Image}}" alt="">
          <h3>{{product.Name}}</h3>
-         <div class="price">{{product.Price|number_format(0, '.', ',')}}<span> &#8363;</span></div>
+         <div class="price">{{product.Sale_Price|number_format(0, '.', ',')}}<span> &#8363;</span></div>
       </div>
 {% endfor %}
    </div>
@@ -39,7 +39,7 @@
 {% for product in products %}
    <div class="preview" data-target="{{product.id}}">
       <i class="fas fa-times"></i>
-      <img src="./Image/{{product.Image}}" alt="">
+      <img src="./Image/{{product.Pro_Image}}" alt="">
       <h3></h3>
       <div class="stars">
          <i class="fas fa-star"></i>
@@ -49,8 +49,8 @@
          <i class="fas fa-star-half-alt"></i>
          <span>( 250 )</span>
       </div>
-      <p>{{product.Detail}}</p>
-      <div class="price">{{product.Price|number_format(0, '.', ',')}}<span> &#8363;</span>
+      {# <p>{{product.Detail}}</p> #}
+      <div class="price">{{product.Sale_Price|number_format(0, '.', ',')}}<span> &#8363;</span>
         </div>
       <div class="buttons">
          {# <a href="#" class="buy">buy now</a> #}

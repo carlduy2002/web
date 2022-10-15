@@ -127,7 +127,7 @@
   </section>
 </head>
     <title>
-        DHC Shop
+        Toy Shop
     </title>
 {% block body %}
 <body>
@@ -146,9 +146,9 @@
                     {% for o in order %}
                         <tr>
                             <td>{{o.ID}}</td>
-                            <td>{{o.Quantity}}</td>
-                            <td>{{o.OrderID}}</td>
-                            <td>{{o.ProID}}</td>
+                            <td>{{o.Qty_Pro}}</td>
+                            <td>{{o.Order_ID}}</td>
+                            <td>{{o.Product_ID}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -63,4 +63,15 @@ class ShopRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    /**
+    * @return Shop[] Returns an array of Supplier objects
+    */
+    public function getShop(): array
+    {
+        return $this->createQueryBuilder('s')
+             ->select('s.id, s.Name, s.Email, s.Address, s.Phone')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

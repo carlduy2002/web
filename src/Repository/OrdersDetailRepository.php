@@ -63,4 +63,19 @@ class OrdersDetailRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+/**
+    * @return OrderDetail[] Returns an array of OrderDetail objects
+    */
+    public function showOrderdetail($id): array
+    {
+        return $this->createQueryBuilder('o')
+             ->select('o.id as ID, o.Qty_Pro as Quantity, od.id as OrderID, p.id as ProID')
+             ->innerJoin('o.product', 'p')
+             ->innerJoin('o.Order_ID', 'od')
+             ->where('o.Order_ID = :id')
+             ->setParameter('id', $id)
+             ->getQuery()
+             ->getResult()
+        ;
+    }
 }

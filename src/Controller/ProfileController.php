@@ -90,12 +90,12 @@ class ProfileController extends AbstractController
                 else{
                     if($newPassword == $passwordConfirm)
                     {
-                        $fullname = $req->request->get('txt-fullname');
+                        // $fullname = $req->request->get('txt-fullname');
                         $email = $req->request->get('txt-email');
                         $address = $req->request->get('txt-address');
                         $gender = $req->request->get('sele-gender');
                         $phone = $req->request->get('txt-phone');
-                        $avatar = $req->request->get('img-avatar');
+                        // $avatar = $req->request->get('img-avatar');
         
 
                         $findUser->setEmail($email);

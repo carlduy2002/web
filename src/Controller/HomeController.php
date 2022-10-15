@@ -12,13 +12,6 @@ class HomeController extends AbstractController
     /**
      * @Route("/home", name="home_page")
      */
-    // public function index(): Response
-    // {
-    //     return $this->render('home/index.html.twig', [
-    //         'controller_name' => 'HomeController',
-    //     ]);
-    // }
-
     public function homeAction(ProductRepository $repo): Response
     {   
         $products = $repo->findAll();

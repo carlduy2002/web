@@ -16,11 +16,19 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Image</th>
+
                     <th scope="col">Name</th>
                     <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Detail</th>
+                    <th scope="col">Original Price</th>
+                    <th scope="col">Sale Price</th>
+                    {# <th scope="col">Image</th> #}
+                    <th scope="col">Shop ID</th>
+                    <th scope="col">Category ID</th>
+                    <th scope="col">Supplier ID</th>
+                    <th scope="col">Status</th>
+
+                    
                     <th style="width:160px;">
                         <a href="{{path ('add_Product')}}"><i class="glyphicon glyphicon-plus"></i> Add new product </a>
                     </th>
@@ -30,13 +38,18 @@
                 {% for p in product %}
                     <tr>
                         <td>{{p.id}}</td>
+                        <td >
+                        <img src="./Image/{{p.ProImage}}" style="height: 100px; width: 100px;">
+                       </td>
                         <td>{{p.Name}}</td>
                         <td>{{p.Quantity}}</td>
-                        <td>{{p.Price|number_format(0, '.', ',')}}<span>&#8363;</span></td>
-                        <td >
-                        <img src="./upload/Image/{{p.Image}}" style="height: 100px; width: 100px;">
-                       </td>
-                        <td>{{p.Detail}}</td>
+                        <td>{{p.OriginalPrice|number_format(0, '.', ',')}}<span>&#8363;</span></td>
+                        <td>{{p.SalePrice|number_format(0, '.', ',')}}<span>&#8363;</span></td>
+
+                        {# <td>{{p.ShopID}}</td>#}
+                        <td>{{p.SupplierID}}</td>
+                       {# <td>{{p.CategoryID}}</td> #}
+                        <td>{{p.Status}}</td>
                         <td><a style="color: #272727; margin-left:30px;" href="{{path ('editProduct', {'id' : p.id})}}" class="glyphicon glyphicon-pencil"></a> 
                         <a style="color: #272727; margin-left:30px;" href="{{path ('deleteProduct', {'id' : p.id})}}" class="glyphicon glyphicon-remove"></a></td>    
                     </tr>

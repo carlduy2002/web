@@ -25,10 +25,10 @@
                 <tr>
                     <th>ID</th>
                     <th>User name</th>
-                    <th>Full name</th>
+                    {# <th>Full name</th> #}
                     <th>Email</th>
                     <th>Gender</th>
-                    <th>Birthday</th>
+                    {# <th>Birthday</th> #}
                     <th>Address</th>
                     <th>Roles</th>
                     <th style="width:185px;" class="action"><a style="color: #272727;" href="{{path ('add_admin')}}">
@@ -41,10 +41,10 @@
                     <tr>
                         <td>{{u.id}}</td>
                         <td>{{u.username}}</td>
-                        <td>{{u.Fullname}}</td>
+                        {# <td>{{u.Fullname}}</td> #}
                         <td>{{u.Email}}</td>
                         <td>{{u.Gender}}</td>
-                        <td>{{u.Birthday|date('y-m-d')}}</td>
+                        {# <td>{{u.Birthday|date('y-m-d')}}</td> #}
                         <td>{{u.Address}}</td>
                         <td>{{u.roles ? u.roles|json_encode : ''}}</td>
                     </tr>

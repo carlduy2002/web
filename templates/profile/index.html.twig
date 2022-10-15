@@ -26,8 +26,8 @@
                 <div class="inputBox">
                     <span>Username :</span>
                     <input type="text" name="" readonly="readonly" value="{{profile.username}}" class="box" required required oninvalid="setCustomValidity('Please enter the username here!')" oninput="setCustomValidity('')">
-                    <span>Full name :</span>
-                    <input type="text" name="txt-fullname" value="{{profile.Fullname}}" class="box" style="text-transform: capitalize">
+                    {# <span>Full name :</span>
+                    <input type="text" name="txt-fullname" value="{{profile.Fullname}}" class="box" style="text-transform: capitalize"> #}
                     <span>Email :</span>
                     <input type="email" name="txt-email" value="{{profile.Email}}" class="box">
                     <span>Address :</span>
@@ -47,8 +47,8 @@
                     <input type="hidden" name="old_pass" value="">
                     <span>Phone :</span>
                     <input type="text" name="txt-phone" value="{{profile.Phone}}" onkeydown="javascript: return ['Backspace','Delete','ArrowLeft','ArrowRight'].includes(event.code) ? true : !isNaN(Number(event.key)) && event.code!=='Space'" placeholder="Enter previous password" class="box" />
-                    <span>Birthday :</span>
-                    <input type="text" readonly="readonly" value="{{profile.Birthday|date('y-m-d')}}" name="update_pass" class="box">
+                    {# <span>Birthday :</span>
+                    <input type="text" readonly="readonly" value="{{profile.Birthday|date('y-m-d')}}" name="update_pass" class="box"> #}
                     <span>Current password :</span>
                     <input type="password" name="txt-currentPassword" placeholder="Enter only when you want to change the password!" class="box">
                     <span>New password :</span>

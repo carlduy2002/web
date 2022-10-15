@@ -46,7 +46,7 @@
                             <td>{{o.Address}}</td>
                             <td>{{o.Status}}</td>
                             <td>{{o.Phone}}</td>
-                            <td>{{o.Client}}</td>
+                            {# <td>{{o.Client}}</td> #}
                             <td><a href="{{path ('confirm', {'id' : o.id})}}">Confirm</a>|<a href="{{path ('Show_OrderDetail', {'id' : o.id})}}">Detail</a>
                         </tr>
                     {% endfor %}

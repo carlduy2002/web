@@ -63,4 +63,15 @@ class SupplierRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+  /**
+    * @return Supplier[] Returns an array of Supplier objects
+    */
+    public function getSupplier(): array
+    {
+        return $this->createQueryBuilder('s')
+             ->select('s.id, s.Name, s.Email, s.Address, s.Phone')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

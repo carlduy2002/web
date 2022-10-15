@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\OrderRepository;
+use App\Repository\OrdersRepository;
 use App\Repository\ProductRepository;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -16,7 +16,7 @@ class OrderManagerController extends AbstractController
     /**
      * @Route("/ordermanager", name="order_manager")
      */
-    public function order_managerAction(OrderRepository $repo): Response
+    public function order_managerAction(OrdersRepository $repo): Response
     {
         $order = $repo->findAll();
 
@@ -29,7 +29,7 @@ class OrderManagerController extends AbstractController
     /**
      * @Route("/confirmOrder/{id}", name="confirm")
      */
-    public function confirmOrderAction($id, ManagerRegistry $res, OrderRepository $repo): Response
+    public function confirmOrderAction($id, ManagerRegistry $res, OrdersRepository $repo): Response
     {
         $entity = $res->getManager();
         $order = $repo->find($id);
@@ -38,7 +38,7 @@ class OrderManagerController extends AbstractController
         $status = 'Delivery';
         
         $order->setDeliveryDate($date); 
-        $order->setStatus($status);
+        // $order->setStatus($status);
 
         $entity->persist($order);
         $entity->flush();
