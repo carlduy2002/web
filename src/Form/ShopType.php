@@ -1,21 +1,20 @@
 <?php
+
 namespace App\Form\Type;
 
 use App\Entity\Shop;
-// use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Exception\Core\Type\EmailType;
-use Symfony\Component\Form\Exception\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\FormBuilderInterface;    
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ShType extends AbstractType
-{
+class ShopType extends AbstractType{
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Shop::class
+            'data-class' => Shop::class
         ]);
     }
 
@@ -28,7 +27,7 @@ class ShType extends AbstractType
         ->add('Address', TextType::class)
         ->add('Phone', TextType::class)
         ->add('add', SubmitType::class, [
-            'label' => 'add'
+            'label'=>'add'
         ]);
     }
 }

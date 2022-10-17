@@ -10,6 +10,12 @@
     <script src="product.js" defer></script>
 
 </head>
+{# <style>
+   #images{
+      height: 100%;
+      weight
+   }
+</style> #}
 
 <body>
 <section id="hero">
@@ -26,7 +32,7 @@
    <div class="products-container">
 {% for product in products %}
       <div class="product" data-name="{{product.id}}">
-         <img src="./Image/{{product.Pro_Image}}" alt="">
+         <img src="./Image/{{product.Pro_Image}}" alt="" id="images" style="width:35%">
          <h3>{{product.Name}}</h3>
          <div class="price">{{product.Sale_Price|number_format(0, '.', ',')}}<span> &#8363;</span></div>
       </div>

@@ -69,9 +69,9 @@ class CartDetailRepository extends ServiceEntityRepository
     public function checkQty($proid, $cartid): array
     {
         return $this->createQueryBuilder('c')
-             ->select('Count(c.id) as count, c.Qty_Product as quantity, c.id as id')
-             ->innerJoin('c.product', 'p')
-             ->innerJoin('c.cart', 'cart')
+             ->select('Count(c.id) as count, c.Qty_Pro as quantity, c.id as id')
+             ->innerJoin('c.Product_ID', 'p')
+             ->innerJoin('c.Cart_ID', 'cart')
              ->andWhere('p.id = :proid')
              ->setParameter('proid', $proid)
              ->andWhere('cart.id = :cartid')
@@ -89,7 +89,7 @@ class CartDetailRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
              ->select('Count(c.id) as CountCart')
-             ->innerJoin('c.cart', 'ca')
+             ->innerJoin('c.Cart_ID', 'ca')
              ->where('ca.id = :id')
              ->setParameter('id', $caID)
              ->getQuery()
@@ -104,11 +104,11 @@ class CartDetailRepository extends ServiceEntityRepository
      public function getProID($caID): array
      {
          return $this->createQueryBuilder('c')
-              ->select('c.Qty_Product as quantity, p.id as ProductID, p.Quantity as ProQty')
-              ->innerJoin('c.cart', 'ca')
+              ->select('c.Qty_Pro as quantity, p.id as ProductID, p.Quantity as ProQty')
+              ->innerJoin('c.Cart_ID', 'ca')
               ->where('ca.id = :id')
               ->setParameter('id', $caID)
-              ->innerJoin('c.product', 'p')
+              ->innerJoin('c.Product_ID', 'p')
               ->getQuery()
               ->getResult()
          ;

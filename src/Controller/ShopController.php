@@ -32,7 +32,7 @@ class ShopController extends AbstractController
     public function addAction(ManagerRegistry $res, Request $req): Response
     {
         $shop = new Shop();
-        $form = $this->createForm(ShType::class, $shop);
+        $form = $this->createForm(ShopType::class, $shop);
 
         $form->handleRequest($req);
         $entity = $res->getManager();
@@ -61,7 +61,7 @@ class ShopController extends AbstractController
     public function editAction(ManagerRegistry $res, Request $req, ShopRepository $repo, $id): Response
     {
         $shop = $repo->find($id);
-        $form = $this->createForm(ShType::class, $shop);
+        $form = $this->createForm(ShopType::class, $shop);
 
         $form->handleRequest($req);
         $entity = $res->getManager();

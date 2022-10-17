@@ -18,14 +18,16 @@ class CartController extends AbstractController
     /**
      * @Route("/showcart", name="showcart")
      */
-    public function cartAction(CartRepository $repo): Response
+    public function cartAction(CartRepository $repo, UserRepository $getUser): Response
     {
         $user = $this->getUser();
+        // $get = $getUser->getUsername($user);
+        // $n = $get[0]['username'];
 
-        $cart = $repo->findOneBy(['user' => $user]);
-        $ca = $repo->showCart($user, $cart);
+        $cart = $repo->findOneBy(['Username' => $user  ]);
+        $ca = $repo->showCart($user  , $cart);
 
-        $price = $repo->sumPrice($user, $cart);
+        $price = $repo->sumPrice($user  , $cart);
         $total = $price[0]['Total'];
 
         return $this->render('cart/index.html.twig', [
@@ -33,6 +35,6 @@ class CartController extends AbstractController
             'total' => $total
         ]);
 
-        // return $this->array($total);
+        // return $this->json($n);
     }
 }

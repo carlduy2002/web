@@ -2,30 +2,23 @@
 
 namespace App\Controller;
 
-use App\Entity\Feedback;
-use App\Repository\FeedbackRepository;
+use App\Entity\Feadback;
+use App\Entity\User;
+use App\Repository\CartRepository;
+use App\Repository\FeadbackRepository;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-// use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FeedbackController extends AbstractController
+class FeadbackController extends AbstractController
 {
-    // /**
-    //  * @Route("/feedback", name="app_feedback")
-    //  */
-    // public function index(): Response
-    // {
-    //     return $this->render('feedback/index.html.twig', [
-    //         'controller_name' => 'FeedbackController',
-    //     ]);
-    // }
     /**
      * @Route("/feadback", name="app_feadback")
      */
-    public function feadbackAction(FeedbackRepository $repo): Response
+    public function feadbackAction(FeadbackRepository $repo): Response
     {
         $feedback = $repo->findAll();
 
@@ -48,7 +41,7 @@ class FeedbackController extends AbstractController
         $user = $this->getUser();
        
 
-        $feadback = new Feedback();
+        $feadback = new Feadback();
         $entity = $res->getManager();
 
         $feadback->setUsername($getUname);
@@ -56,7 +49,7 @@ class FeedbackController extends AbstractController
         $feadback->setPhone($getPhone);
         $feadback->setProductName($getProName);
         $feadback->setMessage($getMess);
-        $feadback->setUsername($user);
+        $feadback->setUser($user);
 
 
 

@@ -48,17 +48,16 @@
                   <i class="bi bi-house-heart-fill"></i>
                 </a>
               </li>
-              <li>
+              {# <li>
                 <a href="{{ path ('about_page') }}" data-after="About">
                   About 
                   <i class="bi bi-info-circle-fill"></i>
                 </a>
-              </li>
+              </li> #}
               <li>
                 <a href="{{ path ('product_page') }}" data-after="Products">
                   Products 
                   <i class="fa-solid fa-socks"></i>
-                  {# <i class="fa-solid fa-teddy-bear"></i> #}
                 </a>
               </li>
               {% if app.user %}
@@ -74,7 +73,7 @@
                       <li><a href="{{ path ('app_supplier') }}">Supliers</a></li>
                       <li><a href="{{ path ('app_shop') }}">Shops</a></li>
                       <li><a href="{{ path ('user_manager') }}">Account</a></li>
-                      <li><a href="{{path ('app_feadback')}}">Feedback</a></li>
+                    
                     </ul>
                   </li>
                 {% else %}
@@ -103,7 +102,7 @@
                   
                 {% else %}
                   <li>
-                     <a href="{{path ('profile_page')}}"data-after="{{ app.user.userIdentifier }}">
+                     <a href="#"data-after="{{ app.user.userIdentifier }}">
                       Hi {{ app.user.userIdentifier }}
                        <span class="bi bi-person-circle"></span>
                     </a>

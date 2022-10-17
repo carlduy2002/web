@@ -18,7 +18,7 @@
           
             <a href="{{ path ('home_page') }}">
               {# <h1><span>D</span>HC <span>S</span>hop</h1> #}
-              <img src="../Image/DHC.png" id="DHC" class="responsive">
+              <img src="../Image/Toys.png" id="DHC" class="responsive">
             </a>
            
           </div>
@@ -61,7 +61,7 @@
                       <li><a href="{{ path ('app_supplier') }}">Supliers</a></li>
                       <li><a href="{{ path ('app_shop') }}">Shops</a></li>
                       <li><a href="{{ path ('user_manager') }}">Account</a></li>
-                      <li><a href="{{path ('app_feadback')}}">Feedback</a></li>
+                      {# <li><a href="{{path ('app_feadback')}}">Feedback</a></li> #}
                     </ul>
                   </li>
                 {% else %}
@@ -76,7 +76,7 @@
               {% if app.user %}
                 {% if is_granted('ROLE_ADMIN') %}
                   <li>
-                    <a href="{{path ('profile_page')}}"data-after="{{ app.user.userIdentifier }}">
+                    <a href="#"data-after="{{ app.user.userIdentifier }}">
                       Hi {{ app.user.userIdentifier }}
                        <span class="bi bi-person-circle"></span>
                     </a>
@@ -110,7 +110,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{ path ('app_signup') }}" data-after="Signup">
+                  <a href="{{ path ('app_register') }}" data-after="Signup">
                     Signup 
                     <i class="bi bi-box-arrow-left"></i>
                   </a>

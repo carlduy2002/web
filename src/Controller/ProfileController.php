@@ -50,7 +50,7 @@ class ProfileController extends AbstractController
 
         if($currentPassword == "" or $newPassword == "" or $passwordConfirm == "")
         {
-            $fullname = $req->request->get('txt-fullname');
+            // $fullname = $req->request->get('txt-fullname');
             $email = $req->request->get('txt-email');
             $address = $req->request->get('txt-address');
             $gender = $req->request->get('sele-gender');

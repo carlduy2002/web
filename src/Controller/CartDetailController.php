@@ -35,7 +35,7 @@ class CartDetailController extends AbstractController
 
         $user = $this->getUser();
 
-        $cart = $cartRepo->findOneBy(['user'=>$user]);//cart
+        $cart = $cartRepo->findOneBy(['Username'=>$user]);//cart
 
         $product = $repo->find($id);
         

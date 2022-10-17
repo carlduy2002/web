@@ -69,11 +69,11 @@ class CartRepository extends ServiceEntityRepository
     public function showCart($user, $cid): array
     {
         return $this->createQueryBuilder('c')
-             ->select('p.Image, p.Name, p.Detail, cd.Qty_Product as Quantity, p.Price, cd.id as id')
-             ->innerJoin('c.user', 'u')
-             ->innerJoin('c.Contains', 'cd')
-             ->innerJoin('cd.product', 'p')
-             ->Where('c.user = :uid')
+             ->select('p.Pro_Image, p.Name, cd.Qty_Pro as Quantity, p.Sale_Price, cd.id as id')
+             ->innerJoin('c.Username', 'u')
+             ->innerJoin('c.cartDetails', 'cd')
+             ->innerJoin('cd.Product_ID', 'p')
+             ->Where('c.Username = :uid')
              ->setParameter('uid', $user)
              ->andWhere('c.id = :cid')
              ->setParameter('cid', $cid)
@@ -88,11 +88,11 @@ class CartRepository extends ServiceEntityRepository
      public function sumPrice($user, $cid): array
      {
          return $this->createQueryBuilder('c')
-              ->select('Sum(p.Price * cd.Qty_Product) as Total')
-              ->innerJoin('c.user', 'u')
-              ->innerJoin('c.Contains', 'cd')
-              ->innerJoin('cd.product', 'p')
-              ->Where('c.user = :uid')
+              ->select('Sum(p.Sale_Price * cd.Qty_Pro) as Total')
+              ->innerJoin('c.Username', 'u')
+              ->innerJoin('c.cartDetails', 'cd')
+              ->innerJoin('cd.Product_ID', 'p')
+              ->Where('c.Username = :uid')
               ->setParameter('uid', $user)
               ->andWhere('c.id = :cid')
               ->setParameter('cid', $cid)
@@ -109,7 +109,7 @@ class CartRepository extends ServiceEntityRepository
      {
          return $this->createQueryBuilder('c')
               ->select('u.id as ID')
-              ->innerJoin('c.user', 'u')
+              ->innerJoin('c.Username', 'u')
               ->where('c.id = :cid')
               ->setParameter('cid', $cid)
               ->getQuery()
